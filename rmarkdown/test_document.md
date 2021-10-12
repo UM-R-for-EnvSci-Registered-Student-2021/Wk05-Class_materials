@@ -7,18 +7,15 @@ output:
   keep_md: true
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+
 
 # Intro
 
 This is a text **vector**:
 
-```{r}
 
+```r
 vector_a <- c(1,2,3)
-
 ```
 
 
