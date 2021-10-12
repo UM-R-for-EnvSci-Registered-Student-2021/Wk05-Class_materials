@@ -81,10 +81,15 @@ read_csv("data/weather.csv")
 weather_data <- read_csv("data/weather.csv", skip = 25)
 
 
+weather_data
+
+
 glimpse(weather_data)
+
 
 weather_data <- weather_data %>% 
   clean_names()
+
 
 glimpse(weather_data)
 
@@ -102,10 +107,15 @@ glimpse(weather_data)
 subset <- ditch_data %>% 
   dplyr::select(site, year, month, depth, ph, conductivity)
 
+subset
+
 # you can get rid of one or several columns
 
 everything_minus_depth <- ditch_data %>% 
   select(-depth)
+
+everything_minus_depth
+
 
 # you can reorder columns
 
@@ -127,12 +137,16 @@ ditch_data %>%
 # filter data (rows)
 
 ditch_data %>% 
-  # filter(year == 2001) %>%
+  filter(year == 2001)
+
+
+ditch_data %>% 
   filter(site != 1)
 
 
 
 # create new columns (mutate)
+
 
 ditch_data <- ditch_data %>% 
   mutate(watershed = "Watershed XXX")
@@ -178,11 +192,17 @@ ditch_data_long <- ditch_data %>%
                names_to = "parameter", 
                values_to = "measure")
 
+ditch_data_long
+
+
+# Example of a very tipycal workflow
+# What if i want to know if there are any temporal trends in the different parameters
 
 summary_table <- ditch_data_long %>%
   group_by(parameter, year) %>% 
   summarise(mean_value = mean(measure, na.rm = TRUE))
 
+summary_table
 
   
   
